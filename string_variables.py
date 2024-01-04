@@ -83,7 +83,7 @@ lang = {
             "``" + Data["GET_HISTORY"] + "`` - Get the history\n"
             "``" + Data["GET_LAST_COMMAND"] + "`` - Get the last command\n"
             "``" + Data["CLEAR_HISTORY"] + "`` - Clear the history\n"
-            "``" + Data["SET_LANGUAGE"] + "`` - Set the language\n"
+            "``" + Data["SET_LANGUAGE"] + "`` - Set the language **!BETA**\n"
             "\t``-lang[value]`` - Change the language\n"
             "\n**logic commands:**\n"
             "--------------------------------------------------------------------------------------------------------\n"
