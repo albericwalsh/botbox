@@ -41,9 +41,7 @@ systeme commands
 
 ``clear history`` - Clear the history
 
-``get language`` - Get the language
-
-``set language`` - Set the language
+``set language`` - Set the language **!BETA**
 
 * ``-lang[value]`` - Change the language
 
