@@ -39,6 +39,10 @@ systeme commands
 
 ``get history`` - Get the history
 
+``clear history`` - Clear the history
+
+``get language`` - Get the language
+
 ``set language`` - Set the language
 
 * ``-lang[value]`` - Change the language
