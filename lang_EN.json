@@ -6,6 +6,8 @@
   "DONT_RESTART": "stop at the end of the conversation",
   "RESTART": "don't stop at the end of the conversation",
   "GET_HISTORY": "get history",
+  "GET_LAST_COMMAND": "get last command",
+  "CLEAR_HISTORY": "clear history",
   "SET_LANGUAGE": "set language",
   "ABOUT": "you talk about",
   "IDK_RESPONSE": "**I don't understand what you mean, try:  **\n\n\t *show all drivers in all time: *```show all drivers```\n\t *stop the bot at the end of the conversation: *```stop at the end of the conversation```\n\t *don't stop the bot at the end of the conversation: *```don't stop at the end of the conversation```\n\t *get your history: *```get history```\n\tor check https://github.com/albericwalsh/botbox/blob/main/command-EN.md for more information",
@@ -30,8 +32,11 @@
   "DONT_RESTART_RESPONSE": "OK, I'll stop at the end of the conversation!",
   "RESTART_RESPONSE": "OK, I'll keep going until you ask me stop!",
   "GET_HISTORY_RESPONSE": "Here is your history: ",
+  "GET_LAST_COMMAND_RESPONSE": "Here is your last command: ",
+  "CLEAR_HISTORY_RESPONSE": "OK, I'll clear your history!",
   "SET_LANGUAGE_RESPONSE": "OK, I'll use ",
   "YES_ABOUT_RESPONSE": "Yes, I talk about ",
   "NO_ABOUT_RESPONSE": "No, I don't talk about ",
-  "ABOUT_RESPONSE": "BOX BOX! I'm botbox, I can talk about formula 1, f1 is my life, I can give you information about drivers, constructors, circuits, seasons and rounds, I can also give you the history of our conversation, and I can talk to you in English or French, I can also stop at the end of the conversation or not, I can also talk to you about me, if you want to know more about me, you can check my github page: https://github.com/albericwalsh/botbox/blob/main/README.md"
+  "ABOUT_RESPONSE": "BOX BOX! I'm botbox, I can talk about formula 1, f1 is my life, I can give you information about drivers, constructors, circuits, seasons and rounds, I can also give you the history of our conversation, and I can talk to you in English or French, I can also stop at the end of the conversation or not, I can also talk to you about me, if you want to know more about me, you can check my github page: https://github.com/albericwalsh/botbox/blob/main/README.md",
+  "NO_HISTORY": "You don't have any history yet, try to talk to me!"
 }

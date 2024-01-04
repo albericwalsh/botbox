@@ -4,13 +4,10 @@ from datetime import datetime
 from string_variables import lang
 from type.ChainedList import *
 import json
-
-from type.CustomTypeJsonEncoder import CustomTypeJsonEncoder
 from type.HashMap import Hashmap
+from variables import var
 
-history = Hashmap(100)
-item = {}
-Data = {"data": history}
+history_all_user = Hashmap(100)
 
 
 def addUserToHistory(user):
@@ -19,9 +16,9 @@ def addUserToHistory(user):
     :param user: user to add
     :type user: int
     """
-    if not history.search(user):
+    if not history_all_user.search(user):
         print("SYSTEM: add " + str(user) + " to history.")
-        history.set(user, ChainedList())
+        history_all_user.set(user, ChainedList())  # create a new personnal history for this user
 
 
 def add_line_to_history(message, response=""):
@@ -43,14 +40,14 @@ def add_line_to_history(message, response=""):
 
     item = {"command": message.content, "response": str, "date": datetime.now().strftime("%d/%m/%Y %H:%M:%S")}
     try:
-        history.set(message.author.id, item)
-    except Exception as e:
+        history_all_user.get(message.author.id).append(item)
+    except AttributeError:
         addUserToHistory(message.author.id)
-        history.get(message.author.id).append(item)
+        history_all_user.get(message.author.id).append(item)
     save_history()
 
 
-def get_last_command(user):
+def get_last_command():
     """return the last command of user
 
     :param user: user to get last command
@@ -58,7 +55,23 @@ def get_last_command(user):
     :return: the last command of user in history
     :rtype: str
     """
-    return ChainedList.get(history.get(user), history.get(user) - 2)
+    str = "\n----------------------------------------------------------------------------------\n"
+    command = history_all_user.get(var.messageAuthor).get(history_all_user.get(var.messageAuthor).len - 1)
+    str += command["date"] + ':                        "' + command["command"] + '" ; status: ' + command[
+        "response"] + "\n"
+    str += "----------------------------------------------------------------------------------\n"
+    return str
+
+
+def clear_history():
+    """clear the history of user
+
+    :param user: user to clear history
+    :type user: int
+    """
+    history_all_user.remove(var.messageAuthor)
+    save_history()
+    return ""
 
 
 def get_history(user):
@@ -75,36 +88,45 @@ def get_history(user):
     # for all line ine history of user return this model
     # DATE: COMMAND -> RESPONSE
     str = "\n----------------------------------------------------------------------------------\n"
-    if not history.search(user):
-        print("DEBUG: " + user.__str__() + " not found in history in :\n ->" + history.__str__())
-        return "No history for this user"
+    if not history_all_user.search(user):
+        return lang["NO_HISTORY"].__str__()
     else:
-        print("DEBUG: " + user.__str__() + " found in history in :\n ->" + history.__str__())
-        user_history = history.get(user)
+        user_history = history_all_user.get(user)
         current_node = user_history.first_node
         while current_node is not None:
             str += current_node.value["date"] + ':                        "' + current_node.value[
-                "command"] + '" ; statu: ' + current_node.value[
+                "command"] + '" ; status: ' + current_node.value[
                        "response"] + "\n"
             current_node = current_node.next
         str += "----------------------------------------------------------------------------------\n"
-    return str
+        return str
 
 
 def save_history():
     global Data
     """save history in history.json"""
-    Data = {"data": history.__dict__()}
-    print("DEBUG: save this history: " + Data.__str__())
+    Data = {"data": history_all_user.__dict__()}
     file = open("history.json", "w")
     file.truncate(0)
-    file.write(json.dumps(Data, indent=4, cls=CustomTypeJsonEncoder))
+    data = {
+        "length": history_all_user.length,
+        "data": [],
+    }
+    for i in history_all_user.buckets:
+        if i[0] is not None:
+            history = []
+            for j in range(i[1].len):
+                history.append(i[1].get(j))
+            data["data"].append([i[0], history])
+        else:
+            data["data"].append([None, None])
+    file.write(json.dumps(data))
     file.close()
 
 
 def load_history():
     """load history from history.json to Data"""
-    global Data
+    global history_all_user
     print("SYSTEM: load history")
     if not os.path.exists("history.json"):
         file = open("history.json", "w")
@@ -117,27 +139,22 @@ def load_history():
         return
     else:
         Data = json.loads(file_content)
-        print("DEBUG: loading this history:\n -> " + Data.__str__())
-        for key, value in Data["data"]["buckets"]:
+        history_all_user = Hashmap(Data["length"])
+        for key, value in Data["data"]:
             if key is not None:
-                history.set(key, ChainedList())
+                history_all_user.set(key, ChainedList())
                 for i in value:
-                    print("DEBUG: " + i.__str__() + " > " + history.get(key).__str__())
-                    if history.get(key) is None:
-                        history.set(key, ChainedList())
-                    else:
-                        history.get(key).append(i)
-            else:
-                history.set(None, ChainedList())
-        print("DEBUG: history loaded:\n -> " + history.__str__())
-        print("SYSTEM: history loaded successfully")
+                    history_all_user.get(key).append(i)
+        else:
+            history_all_user.set(None, ChainedList())
+    print("SYSTEM: history loaded successfully")
 
 
 def init_history():
     """init history"""
     load_history()
-    print("SYSTEM: history: " + history.__str__())
-    history.search(645546464248070156)
+    print("SYSTEM: history: " + history_all_user.__str__())
+    history_all_user.search(645546464248070156)
 
 
 init_history()

@@ -50,12 +50,11 @@ class Hashmap:
         h.update(str(key).encode('utf-8'))
         index = int(h.hexdigest(), 16) % self.length
 
-        for i in range(self.length):
-            if self.buckets[i][0] == index:
-                self.buckets[i] = [key, value]
+        # for i in range(self.length):
+        #     if self.buckets[i][0] == key:
+        #         self.buckets[i] = [key, value]
 
-        self.buckets[index][0] = key
-        self.buckets[index][1] = value
+        self.buckets[index] = [key, value]
 
     def get(self, key):
         """return value at key
@@ -68,10 +67,10 @@ class Hashmap:
         h = blake2b(key=b'itsTheKey', digest_size=10)
         h.update(str(key).encode('utf-8'))
         index = int(h.hexdigest(), 16) % self.length
-        for i in range(self.length):
-            if self.buckets[i][0] == index:
-                return self.buckets[i][1]
-        return None
+        if self.buckets[index][0] == key:
+            return self.buckets[index][1]
+        else :
+            return None
 
     def remove(self, key):
         """remove value at key
@@ -82,10 +81,7 @@ class Hashmap:
         h = blake2b(key=b'itsTheKey', digest_size=10)
         h.update(str(key).encode('utf-8'))
         index = int(h.hexdigest(), 16) % self.length
-        for i in range(self.length):
-            if self.buckets[i][0] == index:
-                self.buckets[i] = [None, None]
-                return
+        self.buckets[index] = [None, None]
 
     def search(self, key):
         """return True if key is in the hashmap else return False
@@ -95,15 +91,12 @@ class Hashmap:
         :return: True if key is in the hashmap else return False
         :rtype: bool
         """
-        h = blake2b(key=b'itsTheKey', digest_size=10)
-        h.update(str(key).encode('utf-8'))
-        index = int(h.hexdigest(), 16) % self.length
         for i in range(self.length):
-            if self.buckets[i][0] == index:
+            if self.buckets[i][0] == key:
                 return True
         return False
 
     def clear(self):
         """clear the hashmap"""
         for i in range(self.length):
-            self.buckets[i] = []
+            self.buckets[i] = [None, None]

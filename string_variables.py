@@ -13,6 +13,8 @@ lang = {
     "DONT_RESTART": Data["DONT_RESTART"],
     "RESTART": Data["RESTART"],
     "GET_HISTORY": Data["GET_HISTORY"],
+    'GET_LAST_COMMAND': Data["GET_LAST_COMMAND"],  # TODO: add this command to the readme
+    'CLEAR_HISTORY': Data["CLEAR_HISTORY"],  # TODO: add this command to the readme
     "SET_LANGUAGE": Data["SET_LANGUAGE"],
     "ABOUT": Data["ABOUT"],
 
@@ -47,10 +49,14 @@ lang = {
     "DONT_RESTART_RESPONSE": Data["DONT_RESTART_RESPONSE"],
     "RESTART_RESPONSE": Data["RESTART_RESPONSE"],
     "GET_HISTORY_RESPONSE": Data["GET_HISTORY_RESPONSE"],
+    "GET_LAST_COMMAND_RESPONSE": Data["GET_LAST_COMMAND_RESPONSE"],
+    "CLEAR_HISTORY_RESPONSE": Data["CLEAR_HISTORY_RESPONSE"],
     "SET_LANGUAGE_RESPONSE": Data["SET_LANGUAGE_RESPONSE"],
     "YES_ABOUT_RESPONSE": Data["YES_ABOUT_RESPONSE"],
     "NO_ABOUT_RESPONSE": Data["NO_ABOUT_RESPONSE"],
     "ABOUT_RESPONSE": Data["ABOUT_RESPONSE"],
+    "NO_HISTORY": Data["NO_HISTORY"],
+
 
     # strings for the help command: ------------------------------------------------------------------------------------
 
@@ -75,6 +81,8 @@ lang = {
             "``" + Data["DONT_RESTART"] + "`` - Don't restart the conversation\n"
             "``" + Data["RESTART"] + "`` - Restart the conversation\n"
             "``" + Data["GET_HISTORY"] + "`` - Get the history\n"
+            "``" + Data["GET_LAST_COMMAND"] + "`` - Get the last command\n"
+            "``" + Data["CLEAR_HISTORY"] + "`` - Clear the history\n"
             "``" + Data["SET_LANGUAGE"] + "`` - Set the language\n"
             "\t``-lang[value]`` - Change the language\n"
             "\n**logic commands:**\n"

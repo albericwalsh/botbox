@@ -58,29 +58,22 @@ async def on_message(message):
     message.content = message.content.lower()
     # si le message ne provient pas d'un bot
     if not message.author.bot:
-        variables.messageAuthor = message.author.id
-        print("SYSTEM: messageAuthor = " + str(message.author.id))
+        variables.var.messageAuthor = message.author.id
         if message.content.startswith("botbox"):
             variables.var.author_id.append(message.author.id)
             conversationData.convTree.convTree.reset()
             is_on = True
-            print("'" + message.content + "'")
-            # Add to history
             add_line_to_history(message, response="botbox")
             await message.channel.send(conversationData.convTree.convTree.root.data)
         elif message.content.startswith("help"):
-            print("'" + message.content + "'")
-            # Add to history
             add_line_to_history(message, response="help")
             await message.channel.send(lang["HELP"])
         elif message.content.startswith("stop") and is_on:
             is_on = False
-            print("'" + message.content + "'")
             # Add to history
             add_line_to_history(message, response="stop")
             await message.channel.send(lang["END_RESPONSE"])
         elif is_on and utils.listContains(variables.var.author_id, message.author.id):
-            print("'" + message.content + "'")
             if "-limit" in message.content:
                 message.content, tmp = utils.getValueOfParameter(message.content, "-limit")
                 variables.var.call_limit = "?limit=" + tmp

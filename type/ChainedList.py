@@ -12,7 +12,7 @@ class ChainedList:
         self.len = 0
 
     def __str__(self):
-        if self.first_node.value is None:
+        if self.first_node is None or self.first_node.value is None:
             return "[]"
         current_node = self.first_node
         string = "["
@@ -26,42 +26,19 @@ class ChainedList:
         return self.len
 
     def __dict__(self):
-        return {
-            "len": self.len,
-            "data": self.convert_to_list()
-        }
-
-    def convert_to_dict(self):
-        """return all values of nodes as the dict
-
-        :return: all values as the dict
-        :rtype: dict
-        """
         if self.first_node is None:
-            return {}
-        current_node = self.first_node
-        dict = {}
-        i = 0
-        while current_node is not None:
-            dict[i] = current_node.value
-            current_node = current_node.next
-            i += 1
-        return dict
-
-    def convert_to_list(self):
-        """return all values of nodes as the list
-
-        :return: all values as the list
-        :rtype: list
-        """
-        if self.first_node is None:
-            return []
-        current_node = self.first_node
-        list = []
-        while current_node is not None:
-            list.append(current_node.value)
-            current_node = current_node.next
-        return list
+            return {
+                "list": [],
+            }
+        else:
+            list = []
+            current_node = self.first_node
+            while current_node is not None:
+                list.append(current_node.value)
+                current_node = current_node.next
+            return {
+                "list": list,
+            }
 
     def has_next(self):
         """return True if the list has a next node else return False
@@ -177,3 +154,9 @@ class node:
     def __init__(self, value, next=None):
         self.value = value
         self.next = next
+
+    def __dict__(self):
+        return {
+            "value": self.value,
+            "next": self.next
+        }

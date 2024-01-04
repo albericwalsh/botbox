@@ -25,6 +25,10 @@ class Conversation:
         self.convTree.add_child(lang["RESTART_RESPONSE"], lang["RESTART"], self.convTree.root.data, autoRestart)
         self.convTree.add_child(lang["GET_HISTORY_RESPONSE"], lang["GET_HISTORY"], self.convTree.root.data,
                                 getHistory)
+        self.convTree.add_child(lang["GET_LAST_COMMAND_RESPONSE"], lang["GET_LAST_COMMAND"], self.convTree.root.data,
+                                get_last_command)
+        self.convTree.add_child(lang["CLEAR_HISTORY_RESPONSE"], lang["CLEAR_HISTORY"], self.convTree.root.data,
+                                clear_history)
         self.convTree.add_child(lang["SET_LANGUAGE_RESPONSE"], lang["SET_LANGUAGE"], self.convTree.root.data,
                                 ReloadLanguage)
         self.convTree.add_child(lang["CHECK_RESPONSE"], lang["SD"], self.convTree.root.data, showDriver)

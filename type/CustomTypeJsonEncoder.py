@@ -23,5 +23,7 @@ class CustomTypeJsonEncoder(json.JSONEncoder):
             return obj.__dict__
         elif isinstance(obj, ChainedList):
             return obj.__dict__
-        else:
+        elif isinstance(obj, node):
             return obj.__dict__
+        else:
+            return json.JSONEncoder.default(self, obj)
