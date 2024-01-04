@@ -1,0 +1,23 @@
+{
+  "SAD": "afficher tous les conducteurs",
+  "NO": "non",
+  "YES": "oui",
+  "DONT_RESTART": "arrête à la fin de la conversation",
+  "RESTART": "ne t'arrête pas à la fin de la conversation",
+  "GET_HISTORY": "obtenir l'historique",
+  "SET_LANGUAGE": "définir la langue",
+  "IDK_RESPONSE": "**Je ne comprends pas ce que vous voulez dire, essayez : **\n\n\t *afficher tous les conducteurs en tout temps : *```afficher tous les conducteurs```\n\t *arrêter le bot à la fin de la conversation : *```arrêter à la fin de la conversation```\n\t *ne pas arrêter le bot à la fin de la conversation : *```ne pas arrêter à la fin de la conversation```\n\t *obtenir votre historique : *```obtenir l'historique```\n\tou consultez https://github.com/albericwalsh/botbox/blob/main/command-FR.md pour plus d'informations",
+  "GIVEN_NAME": "prénom : ",
+  "FAMILY_NAME": "nom de famille : ",
+  "DATE_OF_BIRTH": "date de naissance : ",
+  "NATIONALITY": "nationalité : ",
+  "PERMANENT_NUMBER": "numéro permanent : ",
+  "CODE": "code : ",
+  "ROOT": "Salut, je suis un bot Box, puis-je faire quelque chose pour toi ?",
+  "END_RESPONSE": "OK, à plus tard...",
+  "SAD_RESPONSE": "Oui bien sûr, vérifiez cela :",
+  "DONT_RESTART_RESPONSE": "OK, j'arrêterai à la fin de la conversation !",
+  "RESTART_RESPONSE": "OK, je continuerai jusqu'à ce que vous me demandiez d'arrêter !",
+  "GET_HISTORY_RESPONSE": "Voici votre historique : ",
+  "SET_LANGUAGE_RESPONSE": "OK, j'utiliserai "
+}
