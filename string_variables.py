@@ -13,8 +13,8 @@ lang = {
     "DONT_RESTART": Data["DONT_RESTART"],
     "RESTART": Data["RESTART"],
     "GET_HISTORY": Data["GET_HISTORY"],
-    'GET_LAST_COMMAND': Data["GET_LAST_COMMAND"],  # TODO: add this command to the readme
-    'CLEAR_HISTORY': Data["CLEAR_HISTORY"],  # TODO: add this command to the readme
+    'GET_LAST_COMMAND': Data["GET_LAST_COMMAND"],
+    'CLEAR_HISTORY': Data["CLEAR_HISTORY"],
     "SET_LANGUAGE": Data["SET_LANGUAGE"],
     "ABOUT": Data["ABOUT"],
 
