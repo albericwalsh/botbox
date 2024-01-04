@@ -1,10 +1,10 @@
 starting commands
 --------------------------------------------------------------------------------------------------------
-``botbox`` - Start F1 bot
+``botbox`` - Enable F1 bot
 
 ``help`` - Show help
 
-``stop`` - Stop F1 bot
+``reset`` - Reset F1 bot
 
 ``you talk about`` - Give wath talk about
 

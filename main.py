@@ -68,7 +68,7 @@ async def on_message(message):
         elif message.content.startswith("help"):
             add_line_to_history(message, response="help")
             await message.channel.send(lang["HELP"])
-        elif message.content.startswith("stop") and is_on:
+        elif message.content.startswith("reset") and is_on:
             is_on = False
             # Add to history
             add_line_to_history(message, response="stop")
