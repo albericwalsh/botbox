@@ -5,7 +5,7 @@ import variables
 from History.history import *
 from api.command_function.system import setLanguage
 from conversation import conversationData, Conversation
-from string_variables import lang
+from string_variables import str_var
 
 intents = discord.Intents.all()
 
@@ -67,12 +67,12 @@ async def on_message(message):
             await message.channel.send(conversationData.convTree.convTree.root.data)
         elif message.content.startswith("help"):
             add_line_to_history(message, response="help")
-            await message.channel.send(lang["HELP"])
+            await message.channel.send(str_var.lang["HELP"])
         elif message.content.startswith("reset") and is_on:
             is_on = False
             # Add to history
             add_line_to_history(message, response="stop")
-            await message.channel.send(lang["END_RESPONSE"])
+            await message.channel.send(str_var.lang["END_RESPONSE"])
         elif is_on and utils.listContains(variables.var.author_id, message.author.id):
             if "-limit" in message.content:
                 message.content, tmp = utils.getValueOfParameter(message.content, "-limit")

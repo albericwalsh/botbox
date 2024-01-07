@@ -48,9 +48,7 @@ def setLanguage():
     """set the language of the bot"""
     # get the message of the user
     try:
-        string_variables.lang = readAndDumpFile("lang_" + variables.var.language + ".json")
-        print("SYSTEM: language = " + variables.var.language)
-        print("SYSTEM: lang = " + "\n" + string_variables.lang.__str__())
+        string_variables.str_var = string_variables.StringVAR(readAndDumpFile("lang_" + variables.var.language + ".json"))
     except FileNotFoundError:
         print("SYSTEM: language not found")
         variables.var.language = "EN"
@@ -64,10 +62,10 @@ def about():
     :rtype: str
     """
     if variables.var.about == "":
-        return string_variables.lang["ABOUT_RESPONSE"]
+        return string_variables.str_var.lang["ABOUT_RESPONSE"]
     else:
         print("SYSTEM: about = " + variables.var.about)
-        if searchInConversation(variables.var.about, string_variables.lang):
-            return string_variables.lang["YES_ABOUT_RESPONSE"] + '"' + variables.var.about + "'"
+        if searchInConversation(variables.var.about, string_variables.str_var.lang):
+            return string_variables.str_var.lang["YES_ABOUT_RESPONSE"] + '"' + variables.var.about + "'"
         else:
-            return string_variables.lang["NO_ABOUT_RESPONSE"] + '"' + variables.var.about + "'"
+            return string_variables.str_var.lang["NO_ABOUT_RESPONSE"] + '"' + variables.var.about + "'"

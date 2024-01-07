@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 
-from string_variables import lang
+from string_variables import str_var
 from type.ChainedList import *
 import json
 from type.HashMap import Hashmap
@@ -33,7 +33,7 @@ def add_line_to_history(message, response=""):
     global Data
 
     str = "[OK]"
-    if response == lang["IDK_RESPONSE"]:
+    if response == str_var.lang["IDK_RESPONSE"]:
         str = "[NOT FOUND]"
     elif response == "":
         str = "[FAILED]"
@@ -56,7 +56,7 @@ def get_last_command():
     :rtype: str
     """
     str = "\n----------------------------------------------------------------------------------\n"
-    command = history_all_user.get(var.messageAuthor).get(history_all_user.get(var.messageAuthor).len - 1)
+    command = history_all_user.get(str_var.messageAuthor).get(history_all_user.get(str_var.messageAuthor).len - 1)
     str += command["date"] + ':                        "' + command["command"] + '" ; status: ' + command[
         "response"] + "\n"
     str += "----------------------------------------------------------------------------------\n"
@@ -69,7 +69,7 @@ def clear_history():
     :param user: user to clear history
     :type user: int
     """
-    history_all_user.remove(var.messageAuthor)
+    history_all_user.remove(str_var.messageAuthor)
     save_history()
     return ""
 
@@ -89,7 +89,7 @@ def get_history(user):
     # DATE: COMMAND -> RESPONSE
     str = "\n----------------------------------------------------------------------------------\n"
     if not history_all_user.search(user):
-        return lang["NO_HISTORY"].__str__()
+        return str_var.lang["NO_HISTORY"].__str__()
     else:
         user_history = history_all_user.get(user)
         current_node = user_history.first_node

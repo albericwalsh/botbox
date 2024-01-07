@@ -62,10 +62,10 @@ def readAndDumpFile(file, JsonDecoder=json.JSONDecoder):
     :rtype: dict
     """
     try:
-        file = open(file, "r")
-        file_content = file.read()
+        #str must be in utf-8
+        file = open(file, "r", encoding="utf-8")
+        dict = json.load(file, cls=JsonDecoder)
         file.close()
-        dict = json.loads(file_content, cls=JsonDecoder)
         return dict
     except FileNotFoundError:
         print("ERROR: " + file + " not found")

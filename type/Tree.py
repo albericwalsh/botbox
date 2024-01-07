@@ -1,4 +1,4 @@
-from string_variables import lang
+from string_variables import str_var
 
 
 class Node:
@@ -149,7 +149,7 @@ class Tree:
                     self.reset()
                     suffix = "#end"
                 return message + suffix
-        return lang["IDK_RESPONSE"]
+        return str_var.lang["IDK_RESPONSE"]
 
     def reset(self):
         """reset the tree to the root"""
