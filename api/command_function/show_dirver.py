@@ -86,11 +86,11 @@ def showAllDrivers():
     :return: a string with all driver in drivers
     :rtype: str
     """
-    print("DEBUG: limit = " + str_var.call_limit)
-    print("DEBUG: year = " + str_var.year)
+    print("DEBUG: limit = " + var.call_limit)
+    print("DEBUG: year = " + var.year)
     return "\n" + PrintDrivers(call(
-        "http://ergast.com/api/f1/" + str(str_var.year) + str(str_var.constructor) + str(str_var.circuit) + "drivers.json" + str(
-            str_var.call_limit))["MRData"]["DriverTable"])
+        "http://ergast.com/api/f1/" + str(var.year) + str(var.constructor) + str(var.circuit) + "drivers.json" + str(
+            var.call_limit))["MRData"]["DriverTable"])
 
 
 def showDriver():
@@ -99,6 +99,6 @@ def showDriver():
     :return: a string with information about a driver
     :rtype: str
     """
-    print("DEBUG: driver = " + str(str_var.driver))
-    return "\n" + printDriver(call("https://ergast.com/api/f1/drivers/" + str(str_var.driver) + ".json")
+    print("DEBUG: driver = " + str(var.driver))
+    return "\n" + printDriver(call("https://ergast.com/api/f1/drivers/" + str(var.driver) + ".json")
                               ["MRData"]["DriverTable"]["Drivers"])
